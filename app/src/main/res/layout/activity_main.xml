@@ -6,28 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/urlButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/iconUrl"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="Current weather icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regionBox"
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/urlDump"
-        android:layout_width="307dp"
-        android:layout_height="355dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/urlButton"
+        android:id="@+id/tempDegree"
+        android:layout_width="109dp"
+        android:layout_height="41dp"
+        android:fontFamily="@font/exo_semibold"
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.495"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@+id/iconUrl"
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/locationBox"
+        android:layout_width="313dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="92dp"
+        android:fontFamily="@font/exo_semibold"
+        android:textAlignment="center"
+        android:textSize="54sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/regionBox"
+        android:layout_width="287dp"
+        android:layout_height="67dp"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
