@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.serialization.Serializable
 import okhttp3.*
+import org.json.JSONObject
+import org.json.JSONTokener
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
@@ -16,13 +19,13 @@ class MainActivity : AppCompatActivity() {
         val urlDump = findViewById <TextView> (R.id.urlDump)
         val urlButton = findViewById <Button> (R.id.urlButton)
 
-        var city = "Giurgiu"
+        var localitate = "Vedea"
 
         urlButton.setOnClickListener()
         {
             val client = OkHttpClient()
             val request = Request.Builder()
-                .url("https://weatherapi-com.p.rapidapi.com/search.json?q=$city")
+                .url("https://weatherapi-com.p.rapidapi.com/forecast.json?q=$localitate&days=1")
                 .get()
                 .addHeader("X-RapidAPI-Key", "7a584c54b7msh85a521175a1bcefp15860cjsn74e20d2d80e2")
                 .addHeader("X-RapidAPI-Host", "weatherapi-com.p.rapidapi.com")
@@ -43,8 +46,18 @@ class MainActivity : AppCompatActivity() {
                         }
                         else
                         {
-                            val body = response?.body?.string()
-                            urlDump.text = body
+                            val jsonResponse = JSONTokener(response.body?.string()).nextValue() as JSONObject
+                            urlDump.text = jsonResponse.toString()
+
+                            val loc = jsonResponse.getString("location")
+                            Log.i("ID: ", loc)
+
+                            val curr = jsonResponse.getString("current")
+                            Log.i("ID: ", curr)
+
+                            val bazaGrade = jsonResponse.getJSONObject("current")
+                            val grade = bazaGrade.getString("temp_c")
+                            Log.i("Celsius Degrees: ", grade)
                         }
                     }
                 }
