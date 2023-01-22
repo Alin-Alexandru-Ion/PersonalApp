@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         var temperatura = findViewById<TextView>(R.id.tempDegree)
         var locatie = findViewById<TextView>(R.id.locationBox)
         var regiune = findViewById<TextView>(R.id.regionBox)
+        var timp = findViewById<TextView>(R.id.timeBox)
         var urlPoza = "Blank"
         var grade = "0"
 
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                         regiune.text = bazaLocation.getString("region") + ", " + bazaLocation.getString("country")
                         grade = bazaCurr.getString("temp_c")
                             urlPoza = bazaCond.getString("icon")
+                        timp.text = "Last updated: " + bazaCurr.getString("last_updated")
                     }
                 }
             }
