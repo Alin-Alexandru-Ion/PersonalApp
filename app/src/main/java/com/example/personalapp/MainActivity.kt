@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val request = Request.Builder()
             .url("https://weatherapi-com.p.rapidapi.com/forecast.json?q=$intrare&days=1")
             .get()
-            .addHeader("X-RapidAPI-Key", "7a584c54b7msh85a521175a1bcefp15860cjsn74e20d2d80e2")
+            .addHeader("X-RapidAPI-Key", "API KEY")
             .addHeader("X-RapidAPI-Host", "weatherapi-com.p.rapidapi.com")
             .build()
 
